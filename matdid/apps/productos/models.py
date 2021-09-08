@@ -1,15 +1,26 @@
 from django.db import models
+from apps.base.models import BaseModel
+from simple_history.models import HistoricalRecords
 
-class Productos(models.Model):
-  id = models.AutoField(primary_key=True)
-  nombre = models.CharField(max_length=30)
+
+class Producto(BaseModel):
+  nombre = models.CharField(max_length=225)
+  descripcion = models.CharField(max_length=225, null=True)
+  autor = models.CharField(max_length=225, null=True)
   costo = models.IntegerField()
   precio = models.IntegerField()
-  porc_iva = models.DecimalField(max_digits=2,decimal_places=2)
   stock_actual = models.IntegerField()
   stock_minimo = models.IntegerField()
-  ultima_compra = models.DateTimeField()
+  historical = HistoricalRecords()
+
+  @property
+  def _history_user(self):
+    return self.changed_by
+
+  @_history_user.setter
+  def _history_user(self, value):
+    self.changed_by = value
 
 
   def __str__(self):
-    return self.nombre
+    return f'{self.nombre}'

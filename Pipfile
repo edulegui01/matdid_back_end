@@ -5,7 +5,8 @@ name = "pypi"
 
 [packages]
 djangorestframework = "*"
-psycopg2-binary = "*"
+psycopg2 = "*"
+django-simple-history = "*"
 
 [dev-packages]
 

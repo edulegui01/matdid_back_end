@@ -31,18 +31,27 @@ BASE_APPS = [
 ]
 
 LOCAL_APPS = [
-    'apps.localidad',
     'apps.compras',
     'apps.productos',
+    'apps.usuarios',
+    'apps.empleados',
+    'apps.clientes',
+    'apps.proveedores',
+    'apps.ventas',
+    'apps.facturas',
 ]
 
 THIRD_APPS = [
     'rest_framework',
+    'simple_history',
+    "corsheaders",
+    
 ]
 
 INSTALLED_APPS = BASE_APPS+LOCAL_APPS+THIRD_APPS
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'matdid.urls'
@@ -88,10 +98,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
@@ -100,3 +115,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+AUTH_USER_MODEL = 'usuarios.Usuario'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 6
+}
