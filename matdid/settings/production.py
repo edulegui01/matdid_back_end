@@ -1,9 +1,18 @@
 from .base import *
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = ["matdid-back-end.herokuapp.com"]
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'matdid',
+        'USER': 'edu',
+        'PASSWORD': 'lamasita123',
+        'HOST': 'localhost',
+        'PORT': '5432'
+    }
     }
 }
 
