@@ -13,7 +13,6 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432'
     }
-    }
 }
 
 # Static files (CSS, JavaScript, Images)
