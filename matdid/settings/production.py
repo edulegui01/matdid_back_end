@@ -7,11 +7,11 @@ ALLOWED_HOSTS = ["matdid-back-end.herokuapp.com"]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'matdid',
-        'USER': 'edu',
-        'PASSWORD': 'lamasita123',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'NAME': 'df1ncqb8s60um7',
+        'USER': 'hycyzahhoirzvi',
+        'PASSWORD': '28b483d4530317f699d8fe79f2eb33b4cc99ba6f3d8dfc9844f18cc01ea987c3',
+        'HOST': 'ec2-52-0-93-3.compute-1.amazonaws.com',
+        'PORT': 5432
     }
 }
 
