@@ -28,7 +28,7 @@ class VentasViewsSet(viewsets.ModelViewSet):
         return Response({'mensaje':'venta no encontrada'}, status = status.HTTP_404_NOT_FOUND)"""
 
     def create(self, request):
-        venta_claves = ['accion','id_cliente','id_empleado','monto_total','detalle_venta']
+        venta_claves = ['accion','id_cliente','id_empleado','monto_total','detalles']
         venta_valores = list(map(request.data.get,venta_claves))
 
         venta = cargar_datos(venta_claves,venta_valores)
@@ -40,14 +40,14 @@ class VentasViewsSet(viewsets.ModelViewSet):
         else:
             return Response(compra_serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
-        detalle_venta = carga_detalle_compra(venta_claves,venta_valores,Venta,"detalle_venta","id_venta")
+        detalle_venta = carga_detalle_compra(venta_claves,venta_valores,Venta,"detalles","id_venta")
 
         detalle_venta_serializer = DetalleVentaSerializer(data=detalle_venta, many=True)
         
         if detalle_venta_serializer.is_valid():    
             detalle_venta_serializer.save()
-            return Response(compra_serializer.data, status = status.HTTP_200_OK)
-        return Response({'mesagge':'no se pudo crear el detalle venta'}, status = status.HTTP_400_BAD_REQUEST) 
+            return Response({'message':'Se ha creado la venta con éxito'}, status = status.HTTP_200_OK)
+        return Response(detalle_venta_serializer.errors, status = status.HTTP_400_BAD_REQUEST) 
         
 
     def update(self, request, pk=None):

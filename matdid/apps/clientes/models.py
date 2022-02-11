@@ -48,6 +48,7 @@ class Cobro(BaseModel):
     # TODO: Define fields here
     id_cliente = models.ForeignKey(Cliente, on_delete=CASCADE)
     monto = models.IntegerField()
+    fecha = models.DateField(auto_now=True, null=True)
     historical = HistoricalRecords()
 
 

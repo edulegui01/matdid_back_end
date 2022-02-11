@@ -13,8 +13,9 @@ def carga_detalle(claves,valores,detalle):
     return detalle_compra
 
 def carga_detalle_compra(claves,valores,modelo,detalle,id_valor):
-    detalles = carga_detalle(claves,valores,detalle)
-    for detalle in detalles:
+    detalles_g = carga_detalle(claves,valores,detalle)
+    print(detalles_g)
+    for detalle in detalles_g:
         detalle[id_valor]=modelo.objects.values('id').latest('id')['id']
     
-    return detalles
+    return detalles_g

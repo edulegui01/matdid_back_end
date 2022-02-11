@@ -7,6 +7,8 @@ name = "pypi"
 djangorestframework = "*"
 psycopg2 = "*"
 django-simple-history = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [dev-packages]
 

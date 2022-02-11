@@ -39,7 +39,7 @@ class DetalleVenta(BaseModel):
     id_venta = models.ForeignKey(Venta, on_delete=models.CASCADE)
     id_producto = models.ForeignKey('productos.Producto', on_delete=models.CASCADE)
     cantidad = models.IntegerField()
-    precio_venta = models.IntegerField()
+    precio_calculado = models.IntegerField()
     descuento = models.DecimalField('descuento', max_digits=5, decimal_places=2)
     historical = HistoricalRecords()
 

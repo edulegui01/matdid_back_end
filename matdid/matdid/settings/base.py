@@ -1,6 +1,7 @@
 
-
+import django_heroku
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,12 +44,15 @@ LOCAL_APPS = [
 
 THIRD_APPS = [
     'rest_framework',
+    'rest_framework.authtoken',
     'simple_history',
     "corsheaders",
     
 ]
 
 INSTALLED_APPS = BASE_APPS+LOCAL_APPS+THIRD_APPS
+
+TOKEN_EXPIDER_AFTER_SECONDS= 60
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
@@ -99,7 +103,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    #"https://matdid-front-end.herokuapp.com",
+    "http://localhost:3000"
 ]
 
 
@@ -122,3 +127,5 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 6
 }
+
+django_heroku.settings(locals())
