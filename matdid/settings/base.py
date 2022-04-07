@@ -103,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 CORS_ALLOWED_ORIGINS = [
-    #"https://matdid-front-end.herokuapp.com",
+    "https://matdid-front-end.herokuapp.com",
     "http://localhost:3000"
 ]
 
