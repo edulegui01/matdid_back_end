@@ -39,8 +39,9 @@ class DetalleVenta(BaseModel):
     id_venta = models.ForeignKey(Venta, on_delete=models.CASCADE)
     id_producto = models.ForeignKey('productos.Producto', on_delete=models.CASCADE)
     cantidad = models.IntegerField()
-    precio_venta = models.IntegerField()
-    descuento = models.DecimalField('descuento', max_digits=5, decimal_places=2)
+    precio = models.IntegerField(default=0)
+    precio_calculado = models.IntegerField()
+    descuento = models.DecimalField('descuento', max_digits=5, decimal_places=2,  null=True, blank=True)
     historical = HistoricalRecords()
 
     @property
@@ -59,4 +60,4 @@ class DetalleVenta(BaseModel):
 
     def __str__(self):
         """Unicode representation of DetalleVenta."""
-        return f'{self.id_venta} {self.id_producto}'
+        return f'{self.id_venta} {self.id_producto} {self.create_date}'

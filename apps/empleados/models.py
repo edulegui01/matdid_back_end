@@ -13,8 +13,6 @@ class Empleado(BaseModel):
     domicilio = models.CharField('domicilio', max_length=225,null=False,blank=False)
     localidad = models.CharField('localidad', max_length=225, null=False, blank=False)
     email = models.EmailField('email', max_length=225, null=True, blank=True)
-    fecha_ingre = models.DateField('fecha de ingreso', auto_now=False, auto_now_add=False,null=True,blank=True)
-    fecha_sal = models.DateField('fecha de salida', auto_now=False, auto_now_add=False,null=True,blank=True)
     rol = models.CharField('rol', max_length=225,null=False,blank=False)
     historical = HistoricalRecords()
 

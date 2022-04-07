@@ -1,11 +1,11 @@
 from django.db import models
 from rest_framework import serializers
-from apps.proveedores.models import Proveedor
+from apps.clientes.models import Cliente
 
 
-class ProveedorSerializer(serializers.ModelSerializer):
+class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Proveedor
+        model = Cliente
         fields = '__all__'
 
     def to_representation(self, instance):
@@ -15,7 +15,6 @@ class ProveedorSerializer(serializers.ModelSerializer):
             'ruc': instance.ruc,
             'razon_social': instance.razon_social,
             'localidad': instance.localidad,
-            'total_cobrado': instance.total_cobrado,
-            'deuda_por_cobrar': instance.deuda_por_cobrar
+            'total_comprado': instance.total_comprado,
+            'deuda_por_pagar': instance.deuda_por_pagar
         }
-    

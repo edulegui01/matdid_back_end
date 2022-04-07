@@ -2,6 +2,7 @@ from rest_framework import viewsets,status
 from rest_framework.response import Response
 from apps.clientes.serializers.cobros_serializers import CobroSerializer
 from apps.clientes.models import Cobro
+from apps.usuarios.authentication_mixin import Authentication
 
 
 

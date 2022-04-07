@@ -9,7 +9,6 @@ class Proveedor(BaseModel):
     """Model defin ition for Proveedores."""
     
     # TODO: Define fields here
-    cedula = models.IntegerField('cedula', null=False, blank= False)
     nombre = models.CharField('nombre', max_length=225, null=False, blank= False)
     nombre_encargado = models.CharField('nombre_encargado', max_length=225, null=True, blank= False)
     telefono = models.IntegerField('telefono',null=False, blank= False)
@@ -40,7 +39,7 @@ class Proveedor(BaseModel):
 
     def __str__(self):
         """Unicode representation of Proveedores."""
-        return f"{self.nombre}"   
+        return f"{self.nombre}-{self.id}"   
 
 
 class Pago(BaseModel):

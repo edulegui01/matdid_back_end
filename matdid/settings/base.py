@@ -44,12 +44,15 @@ LOCAL_APPS = [
 
 THIRD_APPS = [
     'rest_framework',
+    'rest_framework.authtoken',
     'simple_history',
     "corsheaders",
     
 ]
 
 INSTALLED_APPS = BASE_APPS+LOCAL_APPS+THIRD_APPS
+
+TOKEN_EXPIDER_AFTER_SECONDS= 60
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
@@ -100,7 +103,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 CORS_ALLOWED_ORIGINS = [
-    "https://matdid-front-end.herokuapp.com",
+    #"https://matdid-front-end.herokuapp.com",
+    "http://localhost:3000"
 ]
 
 

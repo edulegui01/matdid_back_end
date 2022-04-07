@@ -1,3 +1,5 @@
+from email.policy import default
+from xml.etree.ElementInclude import default_loader
 from django.db import models
 from django.db.models.deletion import CASCADE
 from simple_history.models import HistoricalRecords
@@ -32,7 +34,7 @@ class Compra(BaseModel):
 
     def __str__(self):
         """Unicode representation of Compra."""
-        return f'{self.accion} {self.monto_total}'
+        return f'{self.id}'
 
 
 class DetalleCompra(BaseModel):
@@ -42,10 +44,10 @@ class DetalleCompra(BaseModel):
     id_compra = models.ForeignKey(Compra, on_delete=models.CASCADE)
     id_producto = models.ForeignKey('productos.Producto', on_delete=models.CASCADE)
     cantidad = models.IntegerField()
-    precio_compra = models.IntegerField()
-    descuento = models.DecimalField('descuento', max_digits=5, decimal_places=2)
+    precio = models.IntegerField(default=0)
+    precio_calculado = models.IntegerField()
+    descuento = models.DecimalField('descuento', max_digits=5, decimal_places=2, null=True, blank=True)
     historical = HistoricalRecords()
-
     @property
     def _history_user(self):
         return self.changed_by

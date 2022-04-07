@@ -15,5 +15,6 @@ class ProductoSerializer(serializers.ModelSerializer):
             'autor': instance.autor,
             'costo': instance.costo,
             'precio': instance.precio,
-            'stock': instance.stock_actual
+            'stock': instance.stock_actual,
+            'fecha': instance.create_date
         }
