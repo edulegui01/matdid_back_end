@@ -1,5 +1,8 @@
 
 
+
+
+
 def cargar_datos(claves,valores):
     datos={}
     for i in range(len(claves)):
@@ -14,11 +17,11 @@ def carga_detalle(claves,valores,detalle):
 
     return detalle_compra
 
-def carga_detalle_compra(claves,valores,modelo,detalle,id_valor,id_update=NULL):
+def carga_detalle_compra(claves,valores,modelo,detalle,id_valor,id_update=None):
     detalles_g = carga_detalle(claves,valores,detalle)
     print(id_update)
     for detalle in detalles_g:
-        if id_update != NULL:
+        if id_update != None:
             detalle[id_valor]=id_update
         else:
             detalle[id_valor]=modelo.objects.values('id').latest('id')['id']
