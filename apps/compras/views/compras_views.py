@@ -7,12 +7,14 @@ from apps.compras.serializers.detalle_compra_serializer import DetalleCompraSeri
 from apps.usuarios.authentication_mixin import Authentication
 from apps.compras.models import Compra, DetalleCompra
 from apps.productos.models import Producto
+from rest_framework.permissions import IsAuthenticated
 from apps.base.funcionalidades_bases import carga_detalle_compra, cargar_datos
 
 
 
 class ComprasViewSet(viewsets.ModelViewSet):
     serializer_class = CompraSerializer
+    permission_classes = (IsAuthenticated,)
     queryset = Compra.objects.values('id','accion','id_proveedor__nombre',
         'id_proveedor__localidad','id_empleado__nombre','Fecha','monto_total').filter(state = True).order_by('id')
     

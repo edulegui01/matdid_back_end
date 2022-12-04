@@ -19,6 +19,7 @@ class VentasViewsSet(viewsets.ModelViewSet):
         venta_claves = ['accion','id_cliente','id_empleado','monto_total','detalles']
         venta_valores = list(map(request.data.get,venta_claves))
         detalle_venta = carga_detalle_compra(venta_claves,venta_valores,Venta,"detalles","id_venta")
+        print(detalle_venta)
         messages_alert=[]
         venta = cargar_datos(venta_claves,venta_valores)
 

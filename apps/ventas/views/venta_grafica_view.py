@@ -13,9 +13,8 @@ class VentasGraficaViewset(viewsets.ViewSet):
     
     
     def list(self, request):
-        queryset = DetalleVenta.objects.values().annotate(month = TruncMonth('create_date')).values('month').annotate(total_vendido= Sum('cantidad')).values('month','total_vendido')
-        
-        
+        queryset = DetalleVenta.objects.values().annotate(month = TruncMonth('create_date')).values('month').annotate(total_vendido= Sum('cantidad')).values('month','total_vendido').order_by('month')
+        print(queryset)
 
         for query_month in queryset:
             query_month['month'] = query_month['month'].month
